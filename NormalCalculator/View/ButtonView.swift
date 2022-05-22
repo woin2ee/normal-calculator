@@ -8,21 +8,42 @@
 import SwiftUI
 
 struct ButtonView: View {
+    
+    let btnSize: CGFloat
+    let btnText: String
+    let fontSize: CGFloat
+    let padding: CGFloat
+    
+    init(content: ButtonContent, width: Double) {
+        self.btnSize = CGFloat(width)
+        self.btnText = content.text
+        self.fontSize = CGFloat(content.fontSize)
+        self.padding = CGFloat(content.padding)
+    }
+    
     var body: some View {
         Button(action: {
+            // 버튼 액션
             print("버튼이 클릭되었습니다.")
+            
+            
         }, label: {
-            Text("+")
-                .font(.system(size: 30))
+            Text(self.btnText)
+                .font(.system(size: self.fontSize))
+                .multilineTextAlignment(.center)
+                .padding(.bottom, self.padding)
+                .frame(width: self.btnSize, height: self.btnSize, alignment: .center)
+                .cornerRadius(self.btnSize / 4)
         })
-        .frame(width: 60, height: 60, alignment: .center)
-        .background(.orange)
-        .cornerRadius(15)
+        .background(.black)
+        .foregroundColor(.white)
+        .frame(width: self.btnSize, height: self.btnSize, alignment: .center)
+        .cornerRadius(self.btnSize / 4)
     }
 }
 
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView()
+        ButtonView(content: .multiply, width: 82.5)
     }
 }

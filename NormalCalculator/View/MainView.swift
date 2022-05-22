@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    var buttonSpacing: CGFloat = 10
+    var buttonSize: CGFloat {
+        (UIScreen.main.bounds.width - 5 * buttonSpacing) / 4
+    }
+    
+    let viewModel = MainViewModel()
+    
     var body: some View {
         VStack {
-            ButtonView()
+            Spacer()
+            
+            Text("test")
+                .font(.system(size: 50))
+            
+            
+            VStack(alignment: .leading, spacing: buttonSpacing) {
+                ForEach(self.viewModel.getBtnArr(), id: \.self) { contents in
+                    HStack(spacing: buttonSpacing) {
+                        ForEach(contents, id: \.self) { content in
+                            ButtonView(content: content, width: self.buttonSize)
+                        }
+                    }
+                }
+            }
         }
-        
     }
 }
 
