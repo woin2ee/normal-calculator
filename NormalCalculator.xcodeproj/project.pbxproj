@@ -21,6 +21,7 @@
 		E8E2F173283A0BCE00329EF1 /* ButtonContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E2F172283A0BCE00329EF1 /* ButtonContent.swift */; };
 		E8E2F178283A4D0600329EF1 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E2F177283A4D0600329EF1 /* MainViewModel.swift */; };
 		E8E2F17B283A4F0F00329EF1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E2F17A283A4F0F00329EF1 /* UserManager.swift */; };
+		E8E2F17D283A85D100329EF1 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E2F17C283A85D100329EF1 /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		E8E2F172283A0BCE00329EF1 /* ButtonContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonContent.swift; sourceTree = "<group>"; };
 		E8E2F177283A4D0600329EF1 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		E8E2F17A283A4F0F00329EF1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		E8E2F17C283A85D100329EF1 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				E8BE9A882838D30000B187A0 /* MainView.swift */,
 				E8BE9A55283890AA00B187A0 /* ContentView.swift */,
 				E8BE9A8A2838D4DD00B187A0 /* ButtonView.swift */,
+				E8E2F17C283A85D100329EF1 /* ResultView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				E8BE9A8B2838D4DD00B187A0 /* ButtonView.swift in Sources */,
 				E8BE9A56283890AA00B187A0 /* ContentView.swift in Sources */,
 				E8BE9A892838D30000B187A0 /* MainView.swift in Sources */,
+				E8E2F17D283A85D100329EF1 /* ResultView.swift in Sources */,
 				E8BE9A54283890AA00B187A0 /* NormalCalculatorApp.swift in Sources */,
 				E8E2F178283A4D0600329EF1 /* MainViewModel.swift in Sources */,
 			);

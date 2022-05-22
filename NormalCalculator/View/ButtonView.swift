@@ -14,17 +14,23 @@ struct ButtonView: View {
     let fontSize: CGFloat
     let padding: CGFloat
     
-    init(content: ButtonContent, width: Double) {
+    @Binding var result: String
+    
+    init(content: ButtonContent, width: Double, result: Binding<String> = .constant("Nil")) {
         self.btnSize = CGFloat(width)
         self.btnText = content.text
         self.fontSize = CGFloat(content.fontSize)
         self.padding = CGFloat(content.padding)
+        _result = result
     }
     
     var body: some View {
         Button(action: {
             // 버튼 액션
-            print("버튼이 클릭되었습니다.")
+            print("\(self.btnText)")
+            
+            // @State var result 를 바꿔야 함
+            self.result += self.btnText
             
             
         }, label: {
@@ -40,6 +46,7 @@ struct ButtonView: View {
         .frame(width: self.btnSize, height: self.btnSize, alignment: .center)
         .cornerRadius(self.btnSize / 4)
     }
+    
 }
 
 struct ButtonView_Previews: PreviewProvider {

@@ -12,7 +12,6 @@ struct UserManager {
     static var btnArr: [[ButtonContent]]? {
         get {
             guard let encodedData = UserDefaults.standard.value(forKey: "customBtnArr") as? Data else { return nil }
-            print(encodedData)
             return try? PropertyListDecoder().decode([[ButtonContent]].self, from: encodedData)
         }
         set {

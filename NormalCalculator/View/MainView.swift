@@ -16,25 +16,30 @@ struct MainView: View {
     
     let viewModel = MainViewModel()
     
+    var btnArr: [[ButtonContent]] {
+        self.viewModel.getBtnArr()
+    }
+    
+    @State private var result: String = ""
+    
     var body: some View {
         VStack {
             Spacer()
             
-            Text("test")
-                .font(.system(size: 50))
-            
+            ResultView(result: $result)
             
             VStack(alignment: .leading, spacing: buttonSpacing) {
-                ForEach(self.viewModel.getBtnArr(), id: \.self) { contents in
+                ForEach(self.btnArr, id: \.self) { contents in
                     HStack(spacing: buttonSpacing) {
                         ForEach(contents, id: \.self) { content in
-                            ButtonView(content: content, width: self.buttonSize)
+                            ButtonView(content: content, width: self.buttonSize, result: $result)
                         }
                     }
                 }
             }
         }
     }
+    
 }
 
 struct MainView_Previews: PreviewProvider {
