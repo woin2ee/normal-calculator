@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MainViewModel {
+struct MainViewModel {
     
     private let defaultBtnArr: [[ButtonContent]] = [
         [.allClear, .none, .none, .division],
@@ -18,10 +18,9 @@ class MainViewModel {
     ]
     
     func getBtnArr() -> [[ButtonContent]] {
-        guard let btnArr = UserManager.btnArr as? [[ButtonContent]] else {
+        guard let btnArr = UserManager.btnArr else {
             print("저장된 배열이 없습니다.")
-//            UserManager.btnArr = defaultBtnArr
-//            UserDefaults.standard.set(defaultBtnArr, forKey: "customBtnArr")
+            UserManager.btnArr = defaultBtnArr
             return defaultBtnArr
         }
         print("저장된 배열 불러오기.")

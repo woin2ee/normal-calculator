@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ButtonContent {
+enum ButtonContent: Codable {
     case zero, one, two, three, four, five, six, seven, eight, nine
 
     case none
