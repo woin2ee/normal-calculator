@@ -9,7 +9,7 @@ import Foundation
 
 struct MainViewModel {
     
-    private var defaultBtnArr: [[ButtonContent]] {
+    private var defaultBtnArr: [[ButtonType]] {
         return [ [.allClear, .none, .none, .division],
                  [.seven, .eight, .nine, .multiply],
                  [.four, .five, .six, .minus],
@@ -17,7 +17,7 @@ struct MainViewModel {
                  [.zero, .dot, .delete, .equals] ]
     }
     
-    func getBtnArr() -> [[ButtonContent]] {
+    func getBtnArr() -> [[ButtonType]] {
         guard let btnArr = UserManager.btnArr else {
             print("저장된 배열이 없습니다.")
             UserManager.btnArr = defaultBtnArr

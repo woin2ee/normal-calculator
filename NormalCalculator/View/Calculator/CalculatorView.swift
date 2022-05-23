@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  CalculatorView.swift
 //  NormalCalculator
 //
 //  Created by Jaewon on 2022/05/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct CalculatorView: View {
     
     var buttonSpacing: CGFloat = 10
     var buttonSize: CGFloat {
@@ -16,7 +16,7 @@ struct MainView: View {
     
     let viewModel = MainViewModel()
     
-    var btnArr: [[ButtonContent]] {
+    var btnArr: [[ButtonType]] {
         self.viewModel.getBtnArr()
     }
     
@@ -44,6 +44,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        CalculatorView()
     }
 }

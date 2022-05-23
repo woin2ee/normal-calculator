@@ -1,5 +1,5 @@
 //
-//  ButtonContent.swift
+//  ButtonType.swift
 //  NormalCalculator
 //
 //  Created by Jaewon on 2022/05/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ButtonContent: Codable {
+enum ButtonType: Codable {
     case zero, one, two, three, four, five, six, seven, eight, nine
 
     case none

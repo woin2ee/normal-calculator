@@ -16,7 +16,7 @@ struct ButtonView: View {
     
     @Binding var result: String
     
-    init(content: ButtonContent, width: Double, result: Binding<String> = .constant("Nil")) {
+    init(content: ButtonType, width: Double, result: Binding<String> = .constant("Nil")) {
         self.btnSize = CGFloat(width)
         self.btnText = content.text
         self.fontSize = CGFloat(content.fontSize)
