@@ -10,14 +10,18 @@ import SwiftUI
 struct ResultView: View {
     
     @Binding var result: String
+    @State private var fontSize: CGFloat = 60
     
     init(result: Binding<String> = .constant("Nil")) {
         _result = result
     }
     
     var body: some View {
-        Text(result)
-            .font(.system(size: 50))
+        Text(self.result)
+            .font(.system(size: self.fontSize))
+            .lineLimit(3)
+            .minimumScaleFactor(0.5)
+            .padding(5)
     }
     
 }
