@@ -26,24 +26,16 @@ struct ButtonView: View {
     
     var body: some View {
         Button(action: {
-            // 버튼 액션
-            print("\(self.btnText)")
-            
-            // @State var result 를 바꿔야 함
             self.result += self.btnText
-            
-            
         }, label: {
             Text(self.btnText)
                 .font(.system(size: self.fontSize))
                 .multilineTextAlignment(.center)
                 .padding(.bottom, self.padding)
                 .frame(width: self.btnSize, height: self.btnSize, alignment: .center)
-                .cornerRadius(self.btnSize / 4)
         })
         .background(.black)
         .foregroundColor(.white)
-        .frame(width: self.btnSize, height: self.btnSize, alignment: .center)
         .cornerRadius(self.btnSize / 4)
     }
     

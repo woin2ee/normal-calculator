@@ -9,13 +9,13 @@ import Foundation
 
 struct MainViewModel {
     
-    private let defaultBtnArr: [[ButtonContent]] = [
-        [.allClear, .none, .none, .division],
-        [.seven, .eight, .nine, .multiply],
-        [.four, .five, .six, .minus],
-        [.one, .two, .three, .plus],
-        [.zero, .dot, .delete, .equals]
-    ]
+    private var defaultBtnArr: [[ButtonContent]] {
+        return [ [.allClear, .none, .none, .division],
+                 [.seven, .eight, .nine, .multiply],
+                 [.four, .five, .six, .minus],
+                 [.one, .two, .three, .plus],
+                 [.zero, .dot, .delete, .equals] ]
+    }
     
     func getBtnArr() -> [[ButtonContent]] {
         guard let btnArr = UserManager.btnArr else {
