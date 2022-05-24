@@ -42,7 +42,7 @@ struct CalculatorView: View {
     private func hStackOfButtons(by types: [ButtonType]) -> some View {
         HStack(spacing: self.buttonSpacing) {
             ForEach(types, id: \.self) { type in
-                ButtonView(content: type, size: self.buttonSize, result: $result)
+                ButtonView(btnType: type, btnsize: self.buttonSize, result: self.$result)
             }
         }
     }

@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum ButtonType: Codable {
     case zero, one, two, three, four, five, six, seven, eight, nine
 
-    case none
+    case none // 비활성 버튼
     case dot
     case delete
     case allClear
@@ -46,6 +47,7 @@ enum ButtonType: Codable {
             
         case .none:
             return ""
+            
         case .dot:
             return "."
         case .delete:
@@ -66,13 +68,14 @@ enum ButtonType: Codable {
         }
     }
     
-    var fontSize: Float {
+    var fontSize: CGFloat {
         switch self {
         case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine:
             return 60
             
         case .none:
             return 0
+            
         case .dot:
             return 60
         case .delete:
@@ -93,13 +96,14 @@ enum ButtonType: Codable {
         }
     }
     
-    var heightOffset: Float {
+    var heightOffset: CGFloat {
         switch self {
         case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine:
             return 0
             
         case .none:
             return 0
+            
         case .dot:
             return 0
         case .delete:

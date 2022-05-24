@@ -9,40 +9,73 @@ import SwiftUI
 
 struct ButtonView: View {
     
+    let btnType: ButtonType
     let btnSize: CGFloat
-    let btnText: String
-    let fontSize: CGFloat
-    let heightOffset: CGFloat
     
     @Binding var result: String
     
-    init(content: ButtonType, size: CGFloat, result: Binding<String> = .constant("Nil")) {
-        self.btnSize = size
-        self.btnText = content.text
-        self.fontSize = CGFloat(content.fontSize)
-        self.heightOffset = CGFloat(content.heightOffset)
+    init(btnType: ButtonType, btnsize: CGFloat, result: Binding<String> = .constant("Nil")) {
+        self.btnType = btnType
+        self.btnSize = btnsize
         _result = result
     }
     
     var body: some View {
         Button(action: {
-            self.result += self.btnText
+            touchedButton()
         }, label: {
-            Text(self.btnText)
-                .font(.system(size: self.fontSize))
+            Text(self.btnType.text)
+                .font(.system(size: btnType.fontSize))
                 .multilineTextAlignment(.center)
-                .padding(.bottom, self.heightOffset)
-                .frame(width: self.btnSize, height: self.btnSize, alignment: .center)
+                .padding(.bottom, btnType.heightOffset)
+                .frame(width: btnSize, height: btnSize, alignment: .center)
         })
         .background(.black)
         .foregroundColor(.white)
-        .cornerRadius(self.btnSize / 4)
+        .cornerRadius(btnSize / 4)
+    }
+    
+    func touchedButton() {
+        switch self.btnType {
+        case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .none:
+            result += btnType.text
+            
+        case .dot:
+            result += ""
+        case .delete:
+            if result.isEmpty { return }
+            result.removeLast()
+        case .allClear:
+            result.removeAll()
+            
+        case .plus, .minus, .multiply, .division:
+            if result.last?.isOperator() ?? false {
+                _ = result.popLast()
+            }
+            result += btnType.text
+
+        case .equals:
+            self.result += self.btnType.text
+        }
     }
     
 }
 
+extension Character {
+    func isOperator() -> Bool {
+        var isOperator = false
+        let btns: [ButtonType] = [.plus, .minus, .multiply, .division]
+        btns.forEach {
+            if String(self) == $0.text {
+                isOperator = true
+            }
+        }
+        return isOperator
+    }
+}
+
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView(content: .multiply, size: 82.5)
+        ButtonView(btnType: .multiply, btnsize: 82.5)
     }
 }
