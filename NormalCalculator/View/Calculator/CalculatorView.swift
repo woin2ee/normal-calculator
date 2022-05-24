@@ -9,14 +9,17 @@ import SwiftUI
 
 struct CalculatorView: View {
     
-    var buttonSpacing: CGFloat = 10
+    var numOfBtnPerLine = 4
+    var buttonSpacing: CGFloat {
+        return 10
+    }
     var buttonSize: CGFloat {
-        (UIScreen.main.bounds.width - 5 * buttonSpacing) / 4
+        (UIScreen.main.bounds.width - 5 * self.buttonSpacing) / CGFloat(self.numOfBtnPerLine)
     }
     
     let viewModel = MainViewModel()
     
-    var btnArr: [[ButtonType]] {
+    var btnTypeArr: [[ButtonType]] {
         self.viewModel.getBtnArr()
     }
     
@@ -28,14 +31,18 @@ struct CalculatorView: View {
             
             ResultView(result: $result)
             
-            VStack(alignment: .leading, spacing: buttonSpacing) {
-                ForEach(self.btnArr, id: \.self) { contents in
-                    HStack(spacing: buttonSpacing) {
-                        ForEach(contents, id: \.self) { content in
-                            ButtonView(content: content, width: self.buttonSize, result: $result)
-                        }
-                    }
+            VStack(alignment: .leading, spacing: self.buttonSpacing) {
+                ForEach(self.btnTypeArr, id: \.self) { types in
+                    hStackOfButtons(by: types)
                 }
+            }
+        }
+    }
+    
+    private func hStackOfButtons(by types: [ButtonType]) -> some View {
+        HStack(spacing: self.buttonSpacing) {
+            ForEach(types, id: \.self) { type in
+                ButtonView(content: type, size: self.buttonSize, result: $result)
             }
         }
     }

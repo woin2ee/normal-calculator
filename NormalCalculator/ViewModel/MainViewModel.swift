@@ -19,11 +19,11 @@ struct MainViewModel {
     
     func getBtnArr() -> [[ButtonType]] {
         guard let btnArr = UserManager.btnArr else {
-            print("저장된 배열이 없습니다.")
+            debugPrint("저장된 배열이 없습니다.")
             UserManager.btnArr = defaultBtnArr
             return defaultBtnArr
         }
-        print("저장된 배열 불러오기.")
+        debugPrint("저장된 배열 불러오기.")
         return btnArr
     }
     

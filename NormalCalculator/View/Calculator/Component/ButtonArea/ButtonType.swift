@@ -93,7 +93,7 @@ enum ButtonType: Codable {
         }
     }
     
-    var padding: Float {
+    var heightOffset: Float {
         switch self {
         case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine:
             return 0

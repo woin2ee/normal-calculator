@@ -12,15 +12,15 @@ struct ButtonView: View {
     let btnSize: CGFloat
     let btnText: String
     let fontSize: CGFloat
-    let padding: CGFloat
+    let heightOffset: CGFloat
     
     @Binding var result: String
     
-    init(content: ButtonType, width: Double, result: Binding<String> = .constant("Nil")) {
-        self.btnSize = CGFloat(width)
+    init(content: ButtonType, size: CGFloat, result: Binding<String> = .constant("Nil")) {
+        self.btnSize = size
         self.btnText = content.text
         self.fontSize = CGFloat(content.fontSize)
-        self.padding = CGFloat(content.padding)
+        self.heightOffset = CGFloat(content.heightOffset)
         _result = result
     }
     
@@ -31,7 +31,7 @@ struct ButtonView: View {
             Text(self.btnText)
                 .font(.system(size: self.fontSize))
                 .multilineTextAlignment(.center)
-                .padding(.bottom, self.padding)
+                .padding(.bottom, self.heightOffset)
                 .frame(width: self.btnSize, height: self.btnSize, alignment: .center)
         })
         .background(.black)
@@ -43,6 +43,6 @@ struct ButtonView: View {
 
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView(content: .multiply, width: 82.5)
+        ButtonView(content: .multiply, size: 82.5)
     }
 }
