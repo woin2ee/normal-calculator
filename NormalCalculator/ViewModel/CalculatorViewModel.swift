@@ -1,13 +1,13 @@
 //
-//  MainViewModel.swift
+//  CalculatorViewModel.swift
 //  NormalCalculator
 //
 //  Created by Jaewon on 2022/05/22.
 //
 
-import Foundation
+import SwiftUI
 
-struct MainViewModel {
+struct CalculatorViewModel {
     
     private var defaultBtnArr: [[ButtonType]] {
         return [ [.allClear, .none, .none, .division],

@@ -14,10 +14,10 @@ struct CalculatorView: View {
         return 10
     }
     var buttonSize: CGFloat {
-        (UIScreen.main.bounds.width - 5 * self.buttonSpacing) / CGFloat(self.numOfBtnPerLine)
+        (UIScreen.main.bounds.width - CGFloat((numOfBtnPerLine + 1)) * self.buttonSpacing) / CGFloat(self.numOfBtnPerLine)
     }
     
-    let viewModel = MainViewModel()
+    let viewModel = CalculatorViewModel()
     
     var btnTypeArr: [[ButtonType]] {
         self.viewModel.getBtnArr()
@@ -42,7 +42,7 @@ struct CalculatorView: View {
     private func hStackOfButtons(by types: [ButtonType]) -> some View {
         HStack(spacing: self.buttonSpacing) {
             ForEach(types, id: \.self) { type in
-                ButtonView(btnType: type, btnsize: self.buttonSize, result: self.$result)
+                ButtonView(btnType: type, btnSize: self.buttonSize, result: self.$result)
             }
         }
     }

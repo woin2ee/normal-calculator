@@ -12,12 +12,18 @@ struct ButtonView: View {
     let btnType: ButtonType
     let btnSize: CGFloat
     
-    @Binding var result: String
+    @Binding private var result: String
     
-    init(btnType: ButtonType, btnsize: CGFloat, result: Binding<String> = .constant("Nil")) {
+    static var isEnteredDot: Bool = false
+//    @State static var isEnteredOperator: Bool = false
+    
+    let viewModel: ButtonViewModel
+    
+    init(btnType: ButtonType, btnSize: CGFloat, result: Binding<String> = .constant("Nil")) {
         self.btnType = btnType
-        self.btnSize = btnsize
+        self.btnSize = btnSize
         _result = result
+        viewModel = ButtonViewModel(result: result)
     }
     
     var body: some View {
@@ -41,21 +47,25 @@ struct ButtonView: View {
             result += btnType.text
             
         case .dot:
-            result += ""
+            if ButtonView.isEnteredDot { return }
+            ButtonView.isEnteredDot = true
+            result += btnType.text
         case .delete:
             if result.isEmpty { return }
-            result.removeLast()
+            if let last = result.popLast(), String(last) == ButtonType.dot.text {
+                ButtonView.isEnteredDot = false
+            }
         case .allClear:
             result.removeAll()
             
         case .plus, .minus, .multiply, .division:
             if result.last?.isOperator() ?? false {
-                _ = result.popLast()
+                result.removeLast()
             }
             result += btnType.text
-
+            
         case .equals:
-            self.result += self.btnType.text
+            viewModel.calculateResult()
         }
     }
     
@@ -76,6 +86,6 @@ extension Character {
 
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView(btnType: .multiply, btnsize: 82.5)
+        ButtonView(btnType: .multiply, btnSize: 82.5)
     }
 }

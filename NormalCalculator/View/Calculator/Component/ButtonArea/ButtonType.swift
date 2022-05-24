@@ -5,7 +5,6 @@
 //  Created by Jaewon on 2022/05/22.
 //
 
-import Foundation
 import SwiftUI
 
 enum ButtonType: Codable {
