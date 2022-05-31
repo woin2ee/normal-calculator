@@ -18,7 +18,7 @@ struct ResultView: View {
     
     var body: some View {
         Text(result)
-            .font(.system(size: 60, design: .rounded))
+            .font(.system(size: 50, design: .rounded))
 //            .font(.custom("Georgia", size: 60))
             .lineLimit(3)
             .minimumScaleFactor(0.5)
